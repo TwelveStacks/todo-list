@@ -1,6 +1,7 @@
 import './style.css';
 
-const contentDiv = document.getElementById('content')
+const header = document.getElementById('header');
+const contentDiv = document.getElementById('content');
 const title = document.createElement('h1');
 
 title.textContent = "To-Do List";
