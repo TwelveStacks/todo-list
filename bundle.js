@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n// const header = document.getElementById('header');\n// const contentDiv = document.getElementById('content');\n// const title = document.createElement('h1');\n\n// header.getElementsByTagName\n\n// title.textContent = \"To-Do List\";\n// title.classList.add('title');\n\n// header.appendChild(title);\n\n\n//# sourceURL=webpack://package.json/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nconst newProject = document.querySelector('#new-project');\n\nnewProject.addEventListener(\"click\", () => {\n    \n});\n\nclass Project {\n    constructor(name) {\n        this.name = name;\n    }\n}\n\nfunction createProject(Project) {\n    \n}\n\n// const header = document.getElementById('header');\n// const contentDiv = document.getElementById('content');\n// const title = document.createElement('h1');\n\n// header.getElementsByTagName\n\n// title.textContent = \"To-Do List\";\n// title.classList.add('title');\n\n// header.appendChild(title);\n\n\n//# sourceURL=webpack://package.json/./src/index.js?");
 
 /***/ })
 
