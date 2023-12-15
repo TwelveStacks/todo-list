@@ -1,19 +1,28 @@
 import './style.css';
 
-const newProject = document.querySelector('#new-project');
+const contentDiv = document.getElementById('#content');
+
+let projectList = [];
+
+const newProjectButton = document.querySelector('#new-project');
 
 newProject.addEventListener("click", () => {
-    
+    let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
+
+    contentDiv.appendChild(newProject)
 });
 
 class Project {
-    constructor(name) {
-        this.name = name;
+    constructor(title, description, dueDate, priority) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
     }
 }
 
-function createProject(Project) {
-    
+function createProject(project) {
+    projectList.push(project);
 }
 
 // const header = document.getElementById('header');

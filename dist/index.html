@@ -8,14 +8,28 @@
   <body>
     <header id="header">
       <div class="header-left">
-        <button id="new-project" class="button">New</button>
+        <button id="new-project" class="button">Add New Project</button>
       </div>
       <div class="header-center">
-        <h1 class="title">To-Do List</h1>
+        <h1 class="title">Projects</h1>
       </div>
       <div class="header-right"></div>
     </header>
-    <article id="content"></article>
+    <article id="content">
+      <div class="modal" id="modal">
+        <div>
+          <h2>Add New Project</h2>
+          <form class="form" method="dialog" id="form">
+            <input
+              type="text"
+              placeholder="Project title"
+              name="title"
+              id="title"
+            />
+          </form>
+        </div>
+      </div>
+    </article>
     <footer id="footer">
       Made by Ryan Chan
       <a href="https://github.com/TwelveStacks" target="_blank">
