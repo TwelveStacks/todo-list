@@ -8,8 +8,8 @@ const newProjectButton = document.querySelector('#new-project');
 
 newProject.addEventListener("click", () => {
     let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
-
-    contentDiv.appendChild(newProject)
+    createProject(newProject);
+    contentDiv.appendChild(newProject);
 });
 
 class Project {
@@ -24,6 +24,8 @@ class Project {
 function createProject(project) {
     projectList.push(project);
 }
+
+
 
 // const header = document.getElementById('header');
 // const contentDiv = document.getElementById('content');
