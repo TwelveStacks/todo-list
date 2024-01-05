@@ -1,15 +1,28 @@
 import './style.css';
 
-const contentDiv = document.getElementById('#content');
+const contentDiv = document.getElementById('content');
 
 let projectList = [];
 
-const newProjectButton = document.querySelector('#new-project');
+const modal = document.querySelector('#modal');
+const form = document.getElementById('form');
 
-newProject.addEventListener("click", () => {
-    let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
-    createProject(newProject);
-    contentDiv.appendChild(newProject);
+const newProjectButton = document.querySelector('#new-project');
+const closeButton = document.querySelector('.close-button');
+
+newProjectButton.addEventListener("click", () => {
+    resetForm();
+    modal.showModal();
+});
+
+closeButton.addEventListener('click', () => {
+    modal.close();
+});
+
+form.addEventListener("submit", () => {
+    // let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
+    // createProject(newProject);
+    // contentDiv.appendChild(newProject);
 });
 
 class Project {
@@ -25,7 +38,12 @@ function createProject(project) {
     projectList.push(project);
 }
 
-
+function resetForm() {
+    title.value = "";
+    description.value = ""
+    dueDate.value = "";
+    priority = "";
+}
 
 // const header = document.getElementById('header');
 // const contentDiv = document.getElementById('content');
