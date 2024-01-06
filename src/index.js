@@ -1,4 +1,5 @@
 import './style.css';
+import { format } from 'date-fns'
 
 const contentDiv = document.getElementById('content');
 
@@ -10,6 +11,13 @@ const form = document.getElementById('form');
 const newProjectButton = document.querySelector('#new-project');
 const closeButton = document.querySelector('.close-button');
 
+const title = document.getElementById('title');
+const description = document.getElementById('description');
+const dueDate = document.getElementById('dueDate');
+const priority = document.getElementById('priority');
+
+const projectContainer = document.querySelector('.project-container');
+
 newProjectButton.addEventListener("click", () => {
     resetForm();
     modal.showModal();
@@ -20,9 +28,9 @@ closeButton.addEventListener('click', () => {
 });
 
 form.addEventListener("submit", () => {
-    // let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
-    // createProject(newProject);
-    // contentDiv.appendChild(newProject);
+    let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
+    createProject(newProject);
+    contentDiv.appendChild(newProject);
 });
 
 class Project {
@@ -35,14 +43,17 @@ class Project {
 }
 
 function createProject(project) {
-    projectList.push(project);
+    const projectDiv = document.createElement('div');
+    const projectTitle = document.createElement('h2');
+    const projectDueDate = document.createElement('');
+    const deleteBtn = document.createElement('button');
 }
 
 function resetForm() {
     title.value = "";
-    description.value = ""
+    description.value = "";
     dueDate.value = "";
-    priority = "";
+    priority.value = "";
 }
 
 // const header = document.getElementById('header');
