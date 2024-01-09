@@ -12,7 +12,7 @@ const newProjectButton = document.querySelector('#new-project');
 const closeButton = document.querySelector('.close-button');
 
 const title = document.getElementById('title');
-const description = document.getElementById('description');
+const description = document.getElementById('desc');
 const dueDate = document.getElementById('dueDate');
 const priority = document.getElementById('priority');
 

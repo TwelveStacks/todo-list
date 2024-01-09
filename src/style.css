@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Merriweather&family=PT+Sans+Narrow&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -69,6 +71,7 @@ article {
 }
 
 .title {
+	font-family: 'Anton', sans-serif;
 	font-size: 40px;
 	color: #FF5500;
 }
@@ -174,7 +177,6 @@ footer svg:hover {
 .form {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
 	margin: 10px 30px 30px 30px;
 }
 
@@ -184,6 +186,24 @@ footer svg:hover {
 	border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     outline: none;
+}
+
+.form label {
+	text-align: start;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.form select {
+	font-size: 20px;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.form textarea {
+	margin-bottom: 10px;
+	padding: 10px;
 }
 
 .close-button {
