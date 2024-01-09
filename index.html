@@ -11,12 +11,14 @@
         <button id="new-project" class="button">New Project</button>
       </div>
       <div class="header-center">
-        <h1 class="title">Projects</h1>
+        <h1 class="title">My Projects</h1>
       </div>
       <div class="header-right"></div>
     </header>
     <article id="content">
-      <div class="project-container"></div>
+      <div class="project-container">
+        <div class="project-div"></div>
+      </div>
       <dialog class="modal" id="modal">
         <div class="close-button">✖</div>
         <div>
@@ -24,32 +26,33 @@
           <form class="form" method="dialog" id="form">
             <input
               type="text"
-              placeholder="Project title"
+              placeholder="Title"
               name="title"
               id="title"
               required
             />
+            <label for="dueDate">Due Date</label>
             <input
-              type="text"
+              type="date"
               placeholder="Due date"
               name="dueDate"
               id="dueDate"
               required
             />
-            <input
-              type="text"
-              placeholder="Priority"
-              name="priority"
-              id="priority"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              name="Description"
-              id="description"
-              required
-            />
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+              <option value="low">Priority 1</option>
+              <option value="high">Priority 2</option>
+              <option value="high">Priority 3</option>
+              <option value="high">Priority 4</option>
+            </select>
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              id="desc"
+              cols="30"
+              rows="10"
+            ></textarea>
             <button class="button" id="submit-button" type="submit">
               Create
             </button>
