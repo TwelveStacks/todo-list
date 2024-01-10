@@ -29,7 +29,7 @@ closeButton.addEventListener('click', () => {
 
 form.addEventListener("submit", () => {
     let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
-    // createProject(newProject);
+    createProject(newProject);
     addProject(newProject);
     console.log(projectList);
 });
@@ -48,10 +48,25 @@ function addProject(item) {
 }
 
 function createProject(project) {
+    const projectContainer = document.querySelector('.project-container');
     const projectDiv = document.createElement('div');
     const projectTitle = document.createElement('h2');
     const projectDueDate = document.createElement('h3');
     const deleteBtn = document.createElement('button');
+
+    projectDiv.classList.add('project-div')
+    projectTitle.classList.add('project-title')
+    projectDueDate.classList.add('project-duedate')
+    deleteBtn.classList.add('delete-btn')
+
+    projectTitle.textContent = project.title;
+    projectDueDate.textContent = project.dueDate;
+    deleteBtn.textContent = "Remove"
+
+    projectContainer.append(projectDiv);
+    projectDiv.appendChild(projectTitle);
+    projectDiv.appendChild(projectDueDate);
+    projectDiv.appendChild(deleteBtn);
 }
 
 function resetForm() {
