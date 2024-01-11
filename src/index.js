@@ -59,8 +59,8 @@ function createProject(project) {
     projectDueDate.classList.add('project-duedate')
     deleteBtn.classList.add('delete-btn')
 
-    projectTitle.textContent = project.title;
-    projectDueDate.textContent = project.dueDate;
+    projectTitle.textContent = "Title:" + project.title;
+    projectDueDate.textContent = "Due: " + project.dueDate;
     deleteBtn.textContent = "Remove"
 
     projectContainer.append(projectDiv);
@@ -68,6 +68,9 @@ function createProject(project) {
     projectDiv.appendChild(projectDueDate);
     projectDiv.appendChild(deleteBtn);
 }
+
+let testProject = new Project("Test", "Test", "01/10/2024", "High")
+    createProject(testProject);
 
 function resetForm() {
     form.reset();

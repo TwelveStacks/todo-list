@@ -234,12 +234,28 @@ footer svg:hover {
 }
 
 .project-div {
-	background-color: #fa6400;
-	padding: 10px;
-	margin: 10px;
+	background-color: white;
+	padding: 30px;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.project-title {
+	font-family: "Arial", sans-serif;
+}
+
+.project-duedate {
+
+}
+
+.delete-btn {
+
 }
 
 #content {
 	display: flex;
 	flex-wrap: wrap;
+	padding: 20px;
 }
