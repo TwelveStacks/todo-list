@@ -59,7 +59,11 @@ function createProject(project) {
     projectDueDate.classList.add('project-duedate')
     deleteBtn.classList.add('delete-btn')
 
-    projectTitle.textContent = "Title:" + project.title;
+    deleteBtn.addEventListener('click', () => {
+        projectDiv.remove();
+    });
+
+    projectTitle.textContent = "Title: " + project.title;
     projectDueDate.textContent = "Due: " + project.dueDate;
     deleteBtn.textContent = "Remove"
 
@@ -76,13 +80,4 @@ function resetForm() {
     form.reset();
 }
 
-// const header = document.getElementById('header');
-// const contentDiv = document.getElementById('content');
-// const title = document.createElement('h1');
 
-// header.getElementsByTagName
-
-// title.textContent = "To-Do List";
-// title.classList.add('title');
-
-// header.appendChild(title);

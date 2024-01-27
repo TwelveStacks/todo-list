@@ -240,22 +240,28 @@ footer svg:hover {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	margin: 10px;
+	min-height: 100%;
+	width: 200px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
 }
 
 .project-title {
 	font-family: "Arial", sans-serif;
+	overflow: hidden;
 }
 
 .project-duedate {
-
+	
 }
 
 .delete-btn {
-
+	
 }
 
-#content {
+.project-container {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 20px;
 }
