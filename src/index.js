@@ -52,6 +52,7 @@ function createProject(project) {
     const projectDiv = document.createElement('div');
     const projectTitle = document.createElement('h2');
     const projectDueDate = document.createElement('h3');
+    const projectPriority = document.createElement('h3');
     const deleteBtn = document.createElement('button');
 
     projectDiv.classList.add('project-div')
@@ -65,11 +66,13 @@ function createProject(project) {
 
     projectTitle.textContent = "Title: " + project.title;
     projectDueDate.textContent = "Due: " + project.dueDate;
+    projectPriority.textContent = "Priority: " + project.priority;
     deleteBtn.textContent = "Remove"
 
     projectContainer.append(projectDiv);
     projectDiv.appendChild(projectTitle);
     projectDiv.appendChild(projectDueDate);
+    projectDiv.appendChild(projectPriority);
     projectDiv.appendChild(deleteBtn);
 }
 
