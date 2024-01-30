@@ -93,6 +93,7 @@ function createProject(project) {
     const priorityLabel = document.createElement('h2');
     const description = document.createElement('p')
 
+    dialogContainer.classList.add('project-modal');
     modalContainer.classList.add('project-info');
     closeModalButton.classList.add('close-button');
 
@@ -114,9 +115,11 @@ function createProject(project) {
         dialogContainer.close();
     });
 
-    openBtn.addEventListener('click',  () =>{
-        dialogContainer.showModal();
-    })
+    // openBtn.addEventListener('click', () =>{
+    //     dialogContainer.showModal();
+    // })
+
+    dialogContainer.showModal();
 }
 
 let testProject = new Project("Test", "Test", "01/10/2024", "High")

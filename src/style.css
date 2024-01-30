@@ -152,10 +152,13 @@ footer svg:hover {
 }
 
 .modal {
+	text-align: center;
+}
+
+.modal, .project-modal {
 	padding: 1em;
 	margin: auto;
 	padding: 20px;
-	text-align: center;
 	border: 1px solid black;
 	padding: 0px;
 	z-index: 10;
@@ -167,7 +170,7 @@ footer svg:hover {
 	font-weight: bold;
 }
 
-.modal::backdrop {
+.modal::backdrop, .project-modal::backdrop {
     background: rgb(0 0 0 / .4);
     /* background: linear-gradient(45deg, red, blue); */
     opacity: 1;
@@ -257,9 +260,9 @@ footer svg:hover {
 	font-size: 20px;
 }
 
-.project-duedate {
+/* .project-duedate {
 	
-}
+} */
 
 .project-container:nth-last-child() {
 	display: flex;
@@ -282,6 +285,18 @@ footer svg:hover {
 
 /* View project popup modal */
 
+/* .project-modal {
+
+} */
+
 .project-info {
 	background-color: white;
+	padding: 20px;
+	margin: auto;
+	width: 95vh;
+	height: 70vh;
+}
+
+.project-info h1 {
+	font-size: 30px;
 }
