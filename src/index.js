@@ -50,15 +50,21 @@ function addProject(item) {
 function createProject(project) {
     const projectContainer = document.querySelector('.project-container');
     const projectDiv = document.createElement('div');
+    const newDiv = document.createElement('div');
     const projectTitle = document.createElement('h2');
     const projectDueDate = document.createElement('h3');
     const projectPriority = document.createElement('h3');
     const deleteBtn = document.createElement('button');
+    const openBtn = document.createElement('button');
+    const btnDiv = document.createElement('div');
 
-    projectDiv.classList.add('project-div')
-    projectTitle.classList.add('project-title')
-    projectDueDate.classList.add('project-duedate')
-    deleteBtn.classList.add('delete-btn')
+    projectDiv.classList.add('project-div');
+    projectTitle.classList.add('project-title');
+    projectDueDate.classList.add('project-duedate');
+    deleteBtn.classList.add('button');
+    openBtn.classList.add('button');
+    newDiv.classList.add('info-div');
+    btnDiv.classList.add('button-container');
 
     deleteBtn.addEventListener('click', () => {
         projectDiv.remove();
@@ -67,13 +73,17 @@ function createProject(project) {
     projectTitle.textContent = "Title: " + project.title;
     projectDueDate.textContent = "Due: " + project.dueDate;
     projectPriority.textContent = "Priority: " + project.priority;
-    deleteBtn.textContent = "Remove"
+    deleteBtn.textContent = "Delete";
+    openBtn.textContent = "View";
 
     projectContainer.append(projectDiv);
-    projectDiv.appendChild(projectTitle);
-    projectDiv.appendChild(projectDueDate);
-    projectDiv.appendChild(projectPriority);
-    projectDiv.appendChild(deleteBtn);
+    newDiv.appendChild(projectTitle);
+    newDiv.appendChild(projectDueDate);
+    newDiv.appendChild(projectPriority);
+    projectDiv.appendChild(newDiv);
+    btnDiv.appendChild(deleteBtn);
+    btnDiv.appendChild(openBtn);
+    projectDiv.appendChild(btnDiv);
 }
 
 let testProject = new Project("Test", "Test", "01/10/2024", "High")

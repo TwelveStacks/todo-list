@@ -237,36 +237,45 @@ footer svg:hover {
 	background-color: white;
 	padding: 30px;
 	border-radius: 4px;
+	margin: 10px;
+	width: 150px;
+	height: 150px;
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
-	min-height: 100%;
-	width: 200px;
-	height: 200px;
-	display: flex;
+	justify-content: space-between;
 }
 
-.project-div div {
-	overflow: auto;
+.info-div {
+	display: flex;
+	flex-direction: column;
 	gap: 10px;
-	height: auto;
 }
 
 .project-title {
 	font-family: "Arial", sans-serif;
 	overflow-wrap: break-word;
+	font-size: 20px;
 }
 
 .project-duedate {
 	
 }
 
-.delete-btn {
+.project-container:nth-last-child() {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 }
 
 .project-container {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.button-container .button {
+	padding: 5px 10px 5px 10px;
 }
