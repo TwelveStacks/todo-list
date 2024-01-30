@@ -253,7 +253,7 @@ footer svg:hover {
 
 .project-title {
 	font-family: "Arial", sans-serif;
-	overflow-wrap: break-word;
+	overflow: hidden;
 	font-size: 20px;
 }
 
@@ -278,4 +278,10 @@ footer svg:hover {
 
 .button-container .button {
 	padding: 5px 10px 5px 10px;
+}
+
+/* View project popup modal */
+
+.project-info {
+	background-color: white;
 }

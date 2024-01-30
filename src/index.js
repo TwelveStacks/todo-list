@@ -16,8 +16,6 @@ const description = document.getElementById('desc');
 const dueDate = document.getElementById('dueDate');
 const priority = document.getElementById('priority');
 
-const projectContainer = document.querySelector('.project-container');
-
 newProjectButton.addEventListener("click", () => {
     resetForm();
     modal.showModal();
@@ -63,6 +61,7 @@ function createProject(project) {
     projectDueDate.classList.add('project-duedate');
     deleteBtn.classList.add('button');
     openBtn.classList.add('button');
+    openBtn.setAttribute('id','view-button');
     newDiv.classList.add('info-div');
     btnDiv.classList.add('button-container');
 
@@ -84,6 +83,40 @@ function createProject(project) {
     btnDiv.appendChild(deleteBtn);
     btnDiv.appendChild(openBtn);
     projectDiv.appendChild(btnDiv);
+
+    // View modal button functionality
+    const dialogContainer = document.createElement('dialog')
+    const modalContainer = document.createElement('div');
+    const closeModalButton = document.createElement('button');
+    const titleLabel = document.createElement('h1');
+    const dueDateLabel = document.createElement('h2');
+    const priorityLabel = document.createElement('h2');
+    const description = document.createElement('p')
+
+    modalContainer.classList.add('project-info');
+    closeModalButton.classList.add('close-button');
+
+    titleLabel.textContent = 'Title: ' +  project.title;
+    dueDateLabel.textContent = 'Due Date: ' + project.dueDate;
+    priorityLabel.textContent = 'Priority: ' + project.priority;
+    closeModalButton.textContent = 'X';
+    description.textContent = `Description: ${project.description}`;
+
+    contentDiv.appendChild(dialogContainer);
+    dialogContainer.appendChild(modalContainer);
+    modalContainer.appendChild(closeModalButton);
+    modalContainer.appendChild(titleLabel);
+    modalContainer.appendChild(dueDateLabel);
+    modalContainer.appendChild(priorityLabel);
+    modalContainer.appendChild(description);
+
+    closeModalButton.addEventListener('click', () => {
+        dialogContainer.close();
+    });
+
+    openBtn.addEventListener('click',  () =>{
+        dialogContainer.showModal();
+    })
 }
 
 let testProject = new Project("Test", "Test", "01/10/2024", "High")
@@ -92,5 +125,8 @@ let testProject = new Project("Test", "Test", "01/10/2024", "High")
 function resetForm() {
     form.reset();
 }
+
+
+
 
 
