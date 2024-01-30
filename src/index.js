@@ -88,33 +88,44 @@ function createProject(project) {
     const dialogContainer = document.createElement('dialog')
     const modalContainer = document.createElement('div');
     const closeModalButton = document.createElement('button');
-    const titleLabel = document.createElement('h1');
-    const dueDateLabel = document.createElement('h2');
-    const priorityLabel = document.createElement('h2');
     const description = document.createElement('p')
 
     dialogContainer.classList.add('project-modal');
     modalContainer.classList.add('project-info');
     closeModalButton.classList.add('close-button');
 
-    titleLabel.textContent = 'Title: ' +  project.title;
-    dueDateLabel.textContent = 'Due Date: ' + project.dueDate;
-    priorityLabel.textContent = 'Priority: ' + project.priority;
     closeModalButton.textContent = 'X';
     description.textContent = `Description: ${project.description}`;
 
+    // Add dialog modal to the DOM
     contentDiv.appendChild(dialogContainer);
-    dialogContainer.appendChild(modalContainer);
-    modalContainer.appendChild(closeModalButton);
-    modalContainer.appendChild(titleLabel);
-    modalContainer.appendChild(dueDateLabel);
-    modalContainer.appendChild(priorityLabel);
-    modalContainer.appendChild(description);
 
+    // Add close button and project information to modal
+    dialogContainer.appendChild(closeModalButton);
+    dialogContainer.appendChild(modalContainer);
+
+    // Add title, due date, prirority and description elements to modala
+    modalContainer.appendChild(projectTitle);
+
+    // Contain due date priority and description in seperate div
+    const modalDiv = document.createElement('div');
+    modalDiv.appendChild(projectDueDate);
+    modalDiv.appendChild(projectPriority);
+    modalDiv.appendChild(description);
+    modalContainer.appendChild(modalDiv);
+
+    // Div to contain to do list items
+    const itemListDiv = document.createElement('div');
+
+    // Add task button
+    const addTaskBtn = document.createElement('button');
+
+    //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
         dialogContainer.close();
     });
 
+    // Event listener for showing the modal
     // openBtn.addEventListener('click', () =>{
     //     dialogContainer.showModal();
     // })

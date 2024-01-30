@@ -260,10 +260,6 @@ footer svg:hover {
 	font-size: 20px;
 }
 
-/* .project-duedate {
-	
-} */
-
 .project-container:nth-last-child() {
 	display: flex;
 	flex-direction: column;
@@ -285,18 +281,26 @@ footer svg:hover {
 
 /* View project popup modal */
 
-/* .project-modal {
-
-} */
-
 .project-info {
 	background-color: white;
-	padding: 20px;
 	margin: auto;
 	width: 95vh;
 	height: 70vh;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 1fr 4fr;
 }
 
-.project-info h1 {
+.project-info div {
+	display: flex;
+	flex-direction: column;
+	grid-column: 1 / span 1;
+	grid-row: 2 / span 1;
+	padding-left: 30px;
+}
+
+.project-info h2 {
 	font-size: 30px;
+	grid-column: 2 / span 1;
+	padding-top: 20px;
 }
