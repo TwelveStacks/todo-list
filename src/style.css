@@ -231,11 +231,14 @@ footer svg:hover {
     transform: translateY(0);
 }
 
+#content {
+	padding: 20px;
+}
+
 .project-div {
 	background-color: white;
 	padding: 30px;
 	border-radius: 4px;
-	margin: 10px;
 	width: 150px;
 	height: 150px;
 	display: flex;
@@ -286,30 +289,40 @@ footer svg:hover {
 	margin: auto;
 	width: 95vh;
 	height: 70vh;
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-template-rows: 1fr 4fr;
+	display: flex;
+
 }
 
-.project-info div {
+.side-content {
 	display: flex;
 	flex-direction: column;
 	grid-column: 1 / span 1;
 	grid-row: 1 / span 2;
-	padding-left: 30px;
+	padding: 30px;
 	border-right: 1px solid black;
-	padding-top: 30px;
 	background-color: #eeecec;
+	gap: 30px;
 }
 
 .project-info h2 {
 	font-size: 30px;
 	grid-column: 2 / span 1;
-	padding-top: 30px;
-	padding-left: 30px;
+	padding: 30px;
+	border-bottom: 1px solid black;
 }
 
 .modal-header {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.article-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	width: 100%;
+}
+
+.tasks-div {
+	padding: 30px;
 }

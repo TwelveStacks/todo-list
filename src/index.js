@@ -109,18 +109,26 @@ function createProject(project) {
     dialogContainer.appendChild(modalHeader);
     dialogContainer.appendChild(modalContainer);
 
-    // Add title, due date, prirority and description elements to modal 
-    modalContainer.appendChild(projectTitle.cloneNode(true));
-
     // Contain due date priority and description in seperate div
     const modalDiv = document.createElement('div');
+    modalDiv.classList.add('side-content');
     modalDiv.appendChild(projectDueDate.cloneNode(true));
     modalDiv.appendChild(projectPriority.cloneNode(true));
     modalDiv.appendChild(description.cloneNode(true));
     modalContainer.appendChild(modalDiv);
 
-    // Div to contain to do list items
-    const itemListDiv = document.createElement('div');
+    // Add title to project modal
+    const articleDiv = document.createElement('div');
+    articleDiv.classList.add('article-content');
+    articleDiv.appendChild(projectTitle.cloneNode(true))
+    modalContainer.appendChild(articleDiv);
+
+    // Add div to contain task items in project info modal view
+    const tasksDiv = document.createElement('div');
+    tasksDiv.classList.add('tasks-div');
+    tasksDiv.textContent = "Tasks Div";
+    articleDiv.appendChild(tasksDiv);
+    
 
     // Add task button
     const addTaskBtn = document.createElement('button');
