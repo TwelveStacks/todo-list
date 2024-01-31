@@ -83,6 +83,7 @@ function createProject(project) {
     btnDiv.appendChild(openBtn);
     projectDiv.appendChild(btnDiv);
     projectContainer.append(projectDiv);
+    projectContainer.append(projectDiv);
 
     // View modal button functionality
     const dialogContainer = document.createElement('dialog')
