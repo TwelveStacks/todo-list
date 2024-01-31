@@ -127,12 +127,14 @@ function createProject(project) {
     // Add div to contain task items in project info modal view
     const tasksDiv = document.createElement('div');
     tasksDiv.classList.add('tasks-div');
-    tasksDiv.textContent = "Tasks Div";
+    tasksDiv.textContent = "To do";
     articleDiv.appendChild(tasksDiv);
     
-
     // Add task button
     const addTaskBtn = document.createElement('button');
+    addTaskBtn.classList.add('add-button');
+    addTaskBtn.textContent = '+';
+    tasksDiv.appendChild(addTaskBtn);
 
     //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
@@ -154,7 +156,12 @@ function resetForm() {
     form.reset();
 }
 
-
+function addTask() {
+    const addTaskBtn = document.createElement('button');
+    addTaskBtn.classList.add('add-button');
+    addTaskBtn.textContent = '+';
+    tasksDiv.appendChild(addTaskBtn);
+}
 
 
 

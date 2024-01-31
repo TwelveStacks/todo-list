@@ -150,6 +150,7 @@ footer svg:hover {
 	border: 1px solid black;
 	z-index: 10;
 	padding: 0;
+	border-radius: 1em;
 }
 
 .modal h2 {
@@ -206,7 +207,7 @@ footer svg:hover {
 
 .close-button {
     background: #eee;
-    border: 1px solid #888;
+    border: none;
     color: #888;
     font-weight: 400;
     font-size: 16px;
@@ -218,6 +219,9 @@ footer svg:hover {
     user-select: none;
 	position: fixed;
 	outline: none;
+	border-radius: 1em;
+	margin-right: 1rem;
+	margin-top: 1rem;
 }
 
 .close-button:hover {
@@ -325,4 +329,31 @@ footer svg:hover {
 
 .tasks-div {
 	padding: 30px;
+}
+
+.add-button {
+	border-radius: 50%;
+	font-weight: bold;
+	color: #fa6400;
+	border: 0.5px solid #fa6400;
+	background-color: white;
+	font-size: 16px;
+	display: block;
+	width: 25px;
+	height: 25px;
+	user-select: none;
+	margin: 10px;
+}
+
+.add-button:hover {
+	background: #fa6400;
+	color: white;
+	border: none;
+	transform: translateY(-1px);
+}
+
+.add-button:active {
+	border-color: black;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+	transform: translateY(0px);
 }
