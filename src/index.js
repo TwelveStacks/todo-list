@@ -102,6 +102,11 @@ function createProject(project) {
 
     // Add close button and project information to modal
     dialogContainer.appendChild(closeModalButton);
+    // Put close modal button in header div
+    const modalHeader = document.createElement('div');
+    modalHeader.classList.add('modal-header');
+    modalHeader.appendChild(closeModalButton);
+    dialogContainer.appendChild(modalHeader);
     dialogContainer.appendChild(modalContainer);
 
     // Add title, due date, prirority and description elements to modala
