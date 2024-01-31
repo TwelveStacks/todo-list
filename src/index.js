@@ -75,7 +75,6 @@ function createProject(project) {
     deleteBtn.textContent = "Delete";
     openBtn.textContent = "View";
 
-    projectContainer.append(projectDiv);
     newDiv.appendChild(projectTitle);
     newDiv.appendChild(projectDueDate);
     newDiv.appendChild(projectPriority);
@@ -83,6 +82,7 @@ function createProject(project) {
     btnDiv.appendChild(deleteBtn);
     btnDiv.appendChild(openBtn);
     projectDiv.appendChild(btnDiv);
+    projectContainer.append(projectDiv);
 
     // View modal button functionality
     const dialogContainer = document.createElement('dialog')
@@ -109,14 +109,14 @@ function createProject(project) {
     dialogContainer.appendChild(modalHeader);
     dialogContainer.appendChild(modalContainer);
 
-    // Add title, due date, prirority and description elements to modala
-    modalContainer.appendChild(projectTitle);
+    // Add title, due date, prirority and description elements to modal 
+    modalContainer.appendChild(projectTitle.cloneNode(true));
 
     // Contain due date priority and description in seperate div
     const modalDiv = document.createElement('div');
-    modalDiv.appendChild(projectDueDate);
-    modalDiv.appendChild(projectPriority);
-    modalDiv.appendChild(description);
+    modalDiv.appendChild(projectDueDate.cloneNode(true));
+    modalDiv.appendChild(projectPriority.cloneNode(true));
+    modalDiv.appendChild(description.cloneNode(true));
     modalContainer.appendChild(modalDiv);
 
     // Div to contain to do list items
@@ -131,9 +131,9 @@ function createProject(project) {
     });
 
     // Event listener for showing the modal
-    // openBtn.addEventListener('click', () =>{
-    //     dialogContainer.showModal();
-    // })
+    openBtn.addEventListener('click', () =>{
+        dialogContainer.showModal();
+    })
 
     dialogContainer.showModal();
 }
