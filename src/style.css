@@ -345,11 +345,22 @@ footer svg:hover {
 	margin: 10px;
 }
 
-.add-button:hover {
+/* .add-button:hover {
 	background: #fa6400;
 	color: white;
 	border: none;
 	transform: translateY(-1px);
+} */
+
+.add-btn-container:hover .add-button {
+	background: #fa6400;
+	color: white;
+	border: none;
+	transform: translateY(-1px);
+}
+
+.add-btn-container:hover .add-btn-label {
+	color: #fa6400;
 }
 
 .add-button:active {
@@ -357,3 +368,10 @@ footer svg:hover {
     box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
 	transform: translateY(0px);
 }
+
+.add-btn-container {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+}
+

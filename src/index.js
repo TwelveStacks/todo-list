@@ -61,7 +61,6 @@ function createProject(project) {
     projectDueDate.classList.add('project-duedate');
     deleteBtn.classList.add('button');
     openBtn.classList.add('button');
-    openBtn.setAttribute('id','view-button');
     newDiv.classList.add('info-div');
     btnDiv.classList.add('button-container');
 
@@ -85,6 +84,13 @@ function createProject(project) {
     projectContainer.append(projectDiv);
     projectContainer.append(projectDiv);
 
+     // Event listener for showing the project information modal
+     openBtn.addEventListener('click', () =>{
+        openProjectInfo(projectTitle, projectDueDate, projectPriority, project);
+    })
+}
+
+function openProjectInfo(projectTitle, projectDueDate, projectPriority, project) {
     // View modal button functionality
     const dialogContainer = document.createElement('dialog')
     const modalContainer = document.createElement('div');
@@ -132,19 +138,22 @@ function createProject(project) {
     
     // Add task button
     const addTaskBtn = document.createElement('button');
+    const addBtnLabel = document.createElement('label');
+    const addBtnContainer = document.createElement('div');
+    addBtnContainer.classList.add('add-btn-container');
+    addBtnLabel.classList.add('add-btn-label');
+    addBtnLabel.setAttribute('for', 'add-button');
     addTaskBtn.classList.add('add-button');
     addTaskBtn.textContent = '+';
-    tasksDiv.appendChild(addTaskBtn);
+    addBtnLabel.textContent = 'Add Task';
+    addBtnContainer.appendChild(addTaskBtn);
+    addBtnContainer.appendChild(addBtnLabel);
+    tasksDiv.appendChild(addBtnContainer);
 
     //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
-        dialogContainer.close();
+        dialogContainer.remove();
     });
-
-    // Event listener for showing the modal
-    openBtn.addEventListener('click', () =>{
-        dialogContainer.showModal();
-    })
 
     dialogContainer.showModal();
 }
@@ -156,12 +165,6 @@ function resetForm() {
     form.reset();
 }
 
-function addTask() {
-    const addTaskBtn = document.createElement('button');
-    addTaskBtn.classList.add('add-button');
-    addTaskBtn.textContent = '+';
-    tasksDiv.appendChild(addTaskBtn);
-}
 
 
 
