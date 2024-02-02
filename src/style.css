@@ -270,6 +270,7 @@ footer svg:hover {
 .project-container {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 10px;
 }
 
 .button-container {
@@ -329,6 +330,7 @@ footer svg:hover {
 
 .tasks-div {
 	padding: 30px;
+	user-select: none;
 }
 
 .add-button {
@@ -361,12 +363,21 @@ footer svg:hover {
 
 .add-btn-container:hover .add-btn-label {
 	color: #fa6400;
+	transform: translateY(-1px);
+}
+
+.add-btn-container:active .add-button, 
+.add-btn-container:active .add-btn-label {
+	transform: translateY(0px);
+}
+
+.add-btn-label {
+	user-select: none;
 }
 
 .add-button:active {
 	border-color: black;
     box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-	transform: translateY(0px);
 }
 
 .add-btn-container {

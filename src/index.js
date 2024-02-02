@@ -55,6 +55,7 @@ function createProject(project) {
     const deleteBtn = document.createElement('button');
     const openBtn = document.createElement('button');
     const btnDiv = document.createElement('div');
+    let taskList = [];
 
     projectDiv.classList.add('project-div');
     projectTitle.classList.add('project-title');
@@ -86,11 +87,11 @@ function createProject(project) {
 
      // Event listener for showing the project information modal
      openBtn.addEventListener('click', () =>{
-        openProjectInfo(projectTitle, projectDueDate, projectPriority, project);
+        openProjectInfo(projectTitle, projectDueDate, projectPriority, project, taskList);
     })
 }
 
-function openProjectInfo(projectTitle, projectDueDate, projectPriority, project) {
+function openProjectInfo(projectTitle, projectDueDate, projectPriority, project, taskList) {
     // View modal button functionality
     const dialogContainer = document.createElement('dialog')
     const modalContainer = document.createElement('div');
@@ -136,19 +137,7 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project)
     tasksDiv.textContent = "To do";
     articleDiv.appendChild(tasksDiv);
     
-    // Add task button
-    const addTaskBtn = document.createElement('button');
-    const addBtnLabel = document.createElement('label');
-    const addBtnContainer = document.createElement('div');
-    addBtnContainer.classList.add('add-btn-container');
-    addBtnLabel.classList.add('add-btn-label');
-    addBtnLabel.setAttribute('for', 'add-button');
-    addTaskBtn.classList.add('add-button');
-    addTaskBtn.textContent = '+';
-    addBtnLabel.textContent = 'Add Task';
-    addBtnContainer.appendChild(addTaskBtn);
-    addBtnContainer.appendChild(addBtnLabel);
-    tasksDiv.appendChild(addBtnContainer);
+    createAddTaskBtn(tasksDiv);
 
     //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
@@ -165,6 +154,49 @@ function resetForm() {
     form.reset();
 }
 
+function createTask(tasksDiv, taskList) {
+    const taskContainer = document.createElement('div');
+    const taskInput = document.createElement('input');
+    const btnDiv =  document.createElement('div');
+    const cancelBtn = document.createElement('button');
+    const checkBtn = document.createElement('button');
+
+    taskContainer.classList.add('new-task-div');
+    taskInput.classList.add('new-task-input');
+    taskInput.setAttribute('maxlength', '10');
+    cancelBtn.classList.add('new-task-cancel');
+    checkBtn.classList.add('new-task-check');
+
+    btnDiv.append(cancelBtn, checkBtn);
+    taskContainer.appendChild(taskInput, btnDiv);
+    tasksDiv.appendChild(taskContainer);
+
+    checkBtn.addEventListener('click', () => {
+        if(taskInput.value === ''){
+            checkBtn.disabled = true;
+        } 
+        else if(taskInput.value !== ''){
+            checkBtn.disabled = false;
+            taskList.push(taskInput.value);
+        }
+    });
+}
+
+function createAddTaskBtn(tasksDiv) {
+    // Add task button
+    const addTaskBtn = document.createElement('button');
+    const addBtnLabel = document.createElement('label');
+    const addBtnContainer = document.createElement('div');
+    addBtnContainer.classList.add('add-btn-container');
+    addBtnLabel.classList.add('add-btn-label');
+    addBtnLabel.setAttribute('for', 'add-button');
+    addTaskBtn.classList.add('add-button');
+    addTaskBtn.textContent = '+';
+    addBtnLabel.textContent = 'Add Task';
+    addBtnContainer.appendChild(addTaskBtn);
+    addBtnContainer.appendChild(addBtnLabel);
+    tasksDiv.appendChild(addBtnContainer);
+}
 
 
 
