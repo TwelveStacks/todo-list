@@ -3,8 +3,6 @@ import { format } from 'date-fns'
 
 const contentDiv = document.getElementById('content');
 
-let projectList = [];
-
 const modal = document.querySelector('#modal');
 const form = document.getElementById('form');
 
@@ -39,10 +37,6 @@ class Project {
         this.dueDate = dueDate;
         this.priority = priority;
     }
-}
-
-function addProject(item) {
-    projectList.push(item);
 }
 
 function createProject(project) {
@@ -137,7 +131,9 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     tasksDiv.textContent = "To do";
     articleDiv.appendChild(tasksDiv);
     
-    createAddTaskBtn(tasksDiv);
+    createAddTaskBtn(tasksDiv, taskList);
+
+
 
     //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
@@ -164,16 +160,20 @@ function createTask(tasksDiv, taskList) {
     taskContainer.classList.add('new-task-div');
     taskInput.classList.add('new-task-input');
     taskInput.setAttribute('maxlength', '10');
+    taskInput.setAttribute('placeholder',  'Enter Task Here...')
     cancelBtn.classList.add('new-task-cancel');
     checkBtn.classList.add('new-task-check');
 
+    checkBtn.textContent = "✓";
+    cancelBtn.textContent = "✕";
+
     btnDiv.append(cancelBtn, checkBtn);
-    taskContainer.appendChild(taskInput, btnDiv);
+    taskContainer.append(taskInput, btnDiv);
     tasksDiv.appendChild(taskContainer);
 
     checkBtn.addEventListener('click', () => {
         if(taskInput.value === ''){
-            checkBtn.disabled = true;
+            // checkBtn.disabled = true;
         } 
         else if(taskInput.value !== ''){
             checkBtn.disabled = false;
@@ -182,7 +182,7 @@ function createTask(tasksDiv, taskList) {
     });
 }
 
-function createAddTaskBtn(tasksDiv) {
+function createAddTaskBtn(tasksDiv, taskList) {
     // Add task button
     const addTaskBtn = document.createElement('button');
     const addBtnLabel = document.createElement('label');
@@ -196,6 +196,11 @@ function createAddTaskBtn(tasksDiv) {
     addBtnContainer.appendChild(addTaskBtn);
     addBtnContainer.appendChild(addBtnLabel);
     tasksDiv.appendChild(addBtnContainer);
+
+    addBtnContainer.addEventListener('click', ()=> {
+        createTask(tasksDiv, taskList);
+        addBtnContainer.remove();
+    })
 }
 
 
