@@ -14,6 +14,8 @@ const description = document.getElementById('desc');
 const dueDate = document.getElementById('dueDate');
 const priority = document.getElementById('priority');
 
+let projectList = [];
+
 newProjectButton.addEventListener("click", () => {
     resetForm();
     modal.showModal();
@@ -26,7 +28,7 @@ closeButton.addEventListener('click', () => {
 form.addEventListener("submit", () => {
     let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
     createProject(newProject);
-    addProject(newProject);
+    addProjectToList(newProject);
     console.log(projectList);
 });
 
@@ -37,6 +39,10 @@ class Project {
         this.dueDate = dueDate;
         this.priority = priority;
     }
+}
+
+function addProjectToList(project) {
+    projectList.push(project);
 }
 
 function createProject(project) {
@@ -134,6 +140,11 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     tasksDiv.appendChild(taskDivTitle);
     articleDiv.appendChild(tasksDiv);
     
+    // Show existing tasks
+    for (let i = 0; i < taskList.length; i++) {
+        displayTasks(tasksDiv, taskList[i]);
+    }
+
     createAddTaskBtn(tasksDiv, taskList);
 
     //  Event listener for closing the view modal window
@@ -205,7 +216,6 @@ function createAddTaskBtn(tasksDiv, taskList) {
     addBtnContainer.appendChild(addTaskBtn);
     addBtnContainer.appendChild(addBtnLabel);
     tasksDiv.appendChild(addBtnContainer);
-
     addBtnContainer.addEventListener('click', ()=> {
         createTask(tasksDiv, taskList);
         addBtnContainer.remove();
@@ -215,5 +225,11 @@ function createAddTaskBtn(tasksDiv, taskList) {
 function createNewListItem(tasksDiv, taskInput) {
     const li = document.createElement("li");
     li.textContent = taskInput.value;
+    tasksDiv.appendChild(li);
+}
+
+function displayTasks(tasksDiv, item) {
+    const li = document.createElement("li");
+    li.textContent = item;
     tasksDiv.appendChild(li);
 }

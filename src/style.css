@@ -347,13 +347,6 @@ footer svg:hover {
 	margin: 10px;
 }
 
-/* .add-button:hover {
-	background: #fa6400;
-	color: white;
-	border: none;
-	transform: translateY(-1px);
-} */
-
 .add-btn-container:hover .add-button {
 	background: #fa6400;
 	color: white;
@@ -386,3 +379,45 @@ footer svg:hover {
 	width: fit-content;
 }
 
+li {
+	list-style: none;
+	padding: 10px 50px 10px 50px;
+	border: 1px solid black;
+	border-radius: 16px;
+	width: fit-content;
+	margin: 10px 0px 10px 0px;
+	display: flex;
+	flex-wrap: wrap;
+	word-break: break-all;
+}
+
+.new-task-div {
+	border: 1px solid black;
+	width: fit-content;
+	padding: 15px;
+	border-radius: 8px;
+	display: flex;
+	margin: 5px 0px 5px 0px;
+}
+
+.new-task-div div {
+	display: flex;
+	gap: 5px;
+}
+
+.new-task-input {
+	border: 0;
+	font-size: 16px;
+}
+
+.new-task-input:focus {
+	outline: none;
+}
+
+.new-task-cancel {
+
+}
+
+.new-task-check {
+
+}
