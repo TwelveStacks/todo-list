@@ -1,5 +1,4 @@
 import './style.css';
-import { format } from 'date-fns'
 
 const contentDiv = document.getElementById('content');
 
@@ -229,7 +228,7 @@ function createNewListItem(tasksDiv, item) {
     const checkCircle = document.createElement('div');
     const deleteBtn = document.createElement('button');
     liDiv.classList.add('new-task-item')
-    checkCircle.classList.add('checkmark');
+    checkCircle.classList.add('checkmark-unchecked');
     deleteBtn.classList.add('remove-task-btn');
     deleteBtn.textContent='x'
     liDiv.appendChild(checkCircle)
