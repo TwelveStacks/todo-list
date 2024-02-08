@@ -55,7 +55,7 @@ function createProject(project) {
     const deleteBtn = document.createElement('button');
     const openBtn = document.createElement('button');
     const btnDiv = document.createElement('div');
-    let taskList = ['Task 1', 'Task 2', 'Task 3'];
+    let taskList = [];
 
     projectDiv.classList.add('project-div');
     projectTitle.classList.add('project-title');
@@ -142,7 +142,7 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     
     // Show existing tasks
     for (let i = 0; i < taskList.length; i++) {
-        displayTasks(tasksDiv, taskList[i]);
+        createNewListItem(tasksDiv, taskList[i]);
     }
 
     createAddTaskBtn(tasksDiv, taskList);
@@ -155,6 +155,7 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     dialogContainer.showModal();
 }
 
+// Test project object
 let testProject = new Project("Test", "Test", "01/10/2024", "High")
     createProject(testProject);
 
@@ -191,7 +192,7 @@ function createTask(tasksDiv, taskList) {
             taskList.push(taskInput.value);
             console.log(taskList);
             taskContainer.remove();
-            createNewListItem(tasksDiv, taskInput);
+            createNewListItem(tasksDiv, taskInput.value);
             createAddTaskBtn(tasksDiv, taskList);
         }
     });
@@ -222,14 +223,18 @@ function createAddTaskBtn(tasksDiv, taskList) {
     })
 }
 
-function createNewListItem(tasksDiv, taskInput) {
+function createNewListItem(tasksDiv, item) {
     const li = document.createElement("li");
-    li.textContent = taskInput.value;
-    tasksDiv.appendChild(li);
-}
-
-function displayTasks(tasksDiv, item) {
-    const li = document.createElement("li");
+    const liDiv = document.createElement('div');
+    const checkCircle = document.createElement('div');
+    const deleteBtn = document.createElement('button');
+    liDiv.classList.add('new-task-item')
+    checkCircle.classList.add('checkmark');
+    deleteBtn.classList.add('remove-task-btn');
+    deleteBtn.textContent='x'
+    liDiv.appendChild(checkCircle)
+    liDiv.appendChild(li);
+    liDiv.appendChild(deleteBtn);
     li.textContent = item;
-    tasksDiv.appendChild(li);
+    tasksDiv.appendChild(liDiv);
 }
