@@ -148,7 +148,7 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     
     // Show existing tasks
     for (let i = 0; i < taskList.length; i++) {
-        createNewListItem(tasksDiv, taskList[i]);
+        createNewListItem(tasksDiv, taskList[i], taskList);
         console.log(taskList)
     }
 
@@ -200,7 +200,7 @@ function createTask(tasksDiv, taskList) {
             taskList.push(newTask);
             console.log(taskList);
             taskContainer.remove();
-            createNewListItem(tasksDiv, newTask);
+            createNewListItem(tasksDiv, newTask, taskList);
             createAddTaskBtn(tasksDiv, taskList);
         }
     });
@@ -231,7 +231,7 @@ function createAddTaskBtn(tasksDiv, taskList) {
     })
 }
 
-function createNewListItem(tasksDiv, newTask) {
+function createNewListItem(tasksDiv, newTask, taskList) {
     const li = document.createElement("li");
     const liDiv = document.createElement('div');
     const checkCircle = document.createElement('div');
@@ -261,4 +261,11 @@ function createNewListItem(tasksDiv, newTask) {
             newTask.done = true;
        }
     });
+
+    deleteBtn.addEventListener('click', () => {
+        let index = taskList.indexOf(newTask);
+        taskList.splice(index, 1);
+        liDiv.remove();
+        console.log(newTask);
+    })
 }
