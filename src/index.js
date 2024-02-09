@@ -242,21 +242,23 @@ function createNewListItem(tasksDiv, newTask) {
     liDiv.appendChild(checkCircle)
     liDiv.appendChild(li);
     liDiv.appendChild(deleteBtn);
-    // li.textContent = item;
     li.textContent = newTask.name;
     tasksDiv.appendChild(liDiv);
 
     if(newTask.done === true) {
         checkCircle.classList.toggle('checkmark-checked')
-    }
+    } 
 
     checkCircle.addEventListener('click',  () => {
-       if (checkCircle.classList.contains('checkmark-unchecked')){
-           checkCircle.classList.toggle('checkmark-checked')
-           newTask.done = true;
-        } else {
-            checkCircle.classList.toggle('checkmark-unchecked')
+       if (newTask.done === true) {
+            // If task is checked, uncheck it and set done to false
+            checkCircle.classList.add('checkmark-unchecked')
+            checkCircle.classList.remove('checkmark-checked')
             newTask.done = false;
-        }
+       } else {
+            // Else, if unchecked, check the task and set done to true 
+            checkCircle.classList.add('checkmark-checked')
+            newTask.done = true;
+       }
     });
 }
