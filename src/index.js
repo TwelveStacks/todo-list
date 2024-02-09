@@ -40,6 +40,13 @@ class Project {
     }
 }
 
+class Task {
+    constructor(name, done) {
+        this.name = name;
+        this.done = done;
+    }
+}
+
 function addProjectToList(project) {
     projectList.push(project);
 }
@@ -142,6 +149,7 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     // Show existing tasks
     for (let i = 0; i < taskList.length; i++) {
         createNewListItem(tasksDiv, taskList[i]);
+        console.log(taskList)
     }
 
     createAddTaskBtn(tasksDiv, taskList);
@@ -188,10 +196,11 @@ function createTask(tasksDiv, taskList) {
             alert("You must write something!");
         } 
         else if(taskInput.value !== ''){
-            taskList.push(taskInput.value);
+            let newTask = new Task(taskInput.value, false)
+            taskList.push(newTask);
             console.log(taskList);
             taskContainer.remove();
-            createNewListItem(tasksDiv, taskInput.value);
+            createNewListItem(tasksDiv, newTask);
             createAddTaskBtn(tasksDiv, taskList);
         }
     });
@@ -222,7 +231,7 @@ function createAddTaskBtn(tasksDiv, taskList) {
     })
 }
 
-function createNewListItem(tasksDiv, item) {
+function createNewListItem(tasksDiv, newTask) {
     const li = document.createElement("li");
     const liDiv = document.createElement('div');
     const checkCircle = document.createElement('div');
@@ -230,10 +239,24 @@ function createNewListItem(tasksDiv, item) {
     liDiv.classList.add('new-task-item')
     checkCircle.classList.add('checkmark-unchecked');
     deleteBtn.classList.add('remove-task-btn');
-    deleteBtn.textContent='x'
     liDiv.appendChild(checkCircle)
     liDiv.appendChild(li);
     liDiv.appendChild(deleteBtn);
-    li.textContent = item;
+    // li.textContent = item;
+    li.textContent = newTask.name;
     tasksDiv.appendChild(liDiv);
+
+    if(newTask.done === true) {
+        checkCircle.classList.toggle('checkmark-checked')
+    }
+
+    checkCircle.addEventListener('click',  () => {
+       if (checkCircle.classList.contains('checkmark-unchecked')){
+           checkCircle.classList.toggle('checkmark-checked')
+           newTask.done = true;
+        } else {
+            checkCircle.classList.toggle('checkmark-unchecked')
+            newTask.done = false;
+        }
+    });
 }
