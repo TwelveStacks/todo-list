@@ -24,6 +24,10 @@ closeButton.addEventListener('click', () => {
     modal.close();
 });
 
+projectList.forEach(project => {
+    createProject(project);
+})
+
 form.addEventListener("submit", () => {
     let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
     createProject(newProject);
@@ -199,9 +203,12 @@ function createTask(tasksDiv, taskList) {
             let newTask = new Task(taskInput.value, false)
             taskList.push(newTask);
             console.log(taskList);
-            taskContainer.remove();
+            // taskContainer.remove();
             createNewListItem(tasksDiv, newTask, taskList);
-            createAddTaskBtn(tasksDiv, taskList);
+            // createAddTaskBtn(tasksDiv, taskList);
+            tasksDiv.appendChild(taskContainer);
+            taskInput.value = "";
+            taskInput.focus();
         }
     });
 
@@ -236,6 +243,7 @@ function createNewListItem(tasksDiv, newTask, taskList) {
     const liDiv = document.createElement('div');
     const checkCircle = document.createElement('div');
     const deleteBtn = document.createElement('button');
+    li.classList.add('list-item');
     liDiv.classList.add('new-task-item')
     checkCircle.classList.add('checkmark-unchecked');
     deleteBtn.classList.add('remove-task-btn');
@@ -247,17 +255,20 @@ function createNewListItem(tasksDiv, newTask, taskList) {
 
     if(newTask.done === true) {
         checkCircle.classList.toggle('checkmark-checked')
+        li.classList.add('li-checked')
     } 
 
-    checkCircle.addEventListener('click',  () => {
+    liDiv.addEventListener('click',  () => {
        if (newTask.done === true) {
             // If task is checked, uncheck it and set done to false
             checkCircle.classList.add('checkmark-unchecked')
             checkCircle.classList.remove('checkmark-checked')
+            li.classList.remove('li-checked');
             newTask.done = false;
        } else {
             // Else, if unchecked, check the task and set done to true 
             checkCircle.classList.add('checkmark-checked')
+            li.classList.add('li-checked');
             newTask.done = true;
        }
     });
