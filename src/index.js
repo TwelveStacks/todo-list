@@ -198,27 +198,38 @@ function createTask(articleDiv, tasksDiv, taskList) {
     taskContainer.append(taskInput, btnDiv);
     articleDiv.appendChild(taskContainer);
 
-    checkBtn.addEventListener('click', () => {
-        if(taskInput.value === ''){
-            alert("You must write something!");
-        } 
-        else if(taskInput.value !== ''){
-            let newTask = new Task(taskInput.value, false)
-            taskList.push(newTask);
-            console.log(taskList);
-            // taskContainer.remove();
-            createNewListItem(tasksDiv, newTask, taskList);
-            // createAddTaskBtn(tasksDiv, taskList);
-            articleDiv.appendChild(taskContainer);
-            taskInput.value = "";
-            taskInput.focus();
+    taskInput.addEventListener('keypress', function(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer); 
         }
+    })
+
+    checkBtn.addEventListener('click', () => {
+        submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer);
     });
 
     cancelBtn.addEventListener('click', ()=> {
         taskContainer.remove();
         createAddTaskBtn(articleDiv, tasksDiv, taskList);
     })
+}
+
+function submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer) {
+    if(taskInput.value === ''){
+        alert("You must write something!");
+    } 
+    else if(taskInput.value !== ''){
+        let newTask = new Task(taskInput.value, false)
+        taskList.push(newTask);
+        console.log(taskList);
+        // taskContainer.remove();
+        createNewListItem(tasksDiv, newTask, taskList);
+        // createAddTaskBtn(tasksDiv, taskList);
+        articleDiv.appendChild(taskContainer);
+        taskInput.value = "";
+        taskInput.focus();
+    }
 }
 
 function createAddTaskBtn(articleDiv, tasksDiv, taskList) {

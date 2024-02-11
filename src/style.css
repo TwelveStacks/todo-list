@@ -347,7 +347,8 @@ footer svg:hover {
 }
 
 .tasks-div-wrapper {
-	overflow-y: scroll;
+	overflow: auto;
+	scrollbar-gutter: stable;
 	display: flex; 
 	flex-direction: column-reverse;
 }
@@ -402,7 +403,8 @@ footer svg:hover {
 	display: flex;
 	align-items: center;
 	width: fit-content;
-	margin-left: 10px;
+	margin-left: 20px;
+	margin-bottom: 15px;
 	position: sticky;
 }
 
@@ -422,14 +424,13 @@ footer svg:hover {
 }
 
 .new-task-div {
-	/* border: 1px solid black; */
 	width: fit-content;
 	padding: 15px;
 	border-radius: 8px;
 	display: flex;
-	margin: 5px 0px 5px 0px;
 	box-shadow: var(--box-shadow);
 	margin-left: 20px;
+	margin-bottom: 10px;
 }
 
 .new-task-div div {
@@ -454,6 +455,7 @@ footer svg:hover {
 	padding: 0.5rem;
 	box-shadow: var(--box-shadow);
 	margin-left: 20px;
+	margin-right: 10px;
 	margin-top: 10px;
 }
 
