@@ -341,11 +341,21 @@ footer svg:hover {
 }
 
 .tasks-div {
-	padding: 30px;
 	user-select: none;
 	display: flex;
 	flex-direction: column;
-	gap: 0.5em;
+}
+
+.tasks-div-wrapper {
+	overflow-y: scroll;
+	display: flex; 
+	flex-direction: column-reverse;
+}
+
+.task-div-h1 {
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
 }
 
 .add-button {
@@ -392,7 +402,8 @@ footer svg:hover {
 	display: flex;
 	align-items: center;
 	width: fit-content;
-	margin-left: 1px;
+	margin-left: 10px;
+	position: sticky;
 }
 
 .list-item {
@@ -418,6 +429,7 @@ footer svg:hover {
 	display: flex;
 	margin: 5px 0px 5px 0px;
 	box-shadow: var(--box-shadow);
+	margin-left: 20px;
 }
 
 .new-task-div div {
@@ -441,6 +453,12 @@ footer svg:hover {
 	border-radius: 8px;
 	padding: 0.5rem;
 	box-shadow: var(--box-shadow);
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.new-task-item:last-child {
+	margin-bottom: 10px;
 }
 
 .checkmark-unchecked {

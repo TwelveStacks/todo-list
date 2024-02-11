@@ -142,21 +142,24 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     modalContainer.appendChild(articleDiv);
 
     // Add div to contain task items in project info modal view
+    const tasksDivWrapper = document.createElement('div');
     const tasksDiv = document.createElement('div');
     const taskDivTitle = document.createElement('h1');
     tasksDiv.classList.add('tasks-div');
     taskDivTitle.classList.add('task-div-h1');
     taskDivTitle.textContent = "To do";
-    tasksDiv.appendChild(taskDivTitle);
-    articleDiv.appendChild(tasksDiv);
-    
+    // This div is for applying flex-direction: column-reverse;
+    tasksDivWrapper.classList.add('tasks-div-wrapper');
+    articleDiv.append(taskDivTitle);
+    tasksDivWrapper.appendChild(tasksDiv);
+    articleDiv.appendChild(tasksDivWrapper);
     // Show existing tasks
     for (let i = 0; i < taskList.length; i++) {
         createNewListItem(tasksDiv, taskList[i], taskList);
         console.log(taskList)
     }
-
-    createAddTaskBtn(tasksDiv, taskList);
+    
+    createAddTaskBtn(articleDiv, tasksDiv, taskList);
 
     //  Event listener for closing the view modal window
     closeModalButton.addEventListener('click', () => {
@@ -174,7 +177,7 @@ function resetForm() {
     form.reset();
 }
 
-function createTask(tasksDiv, taskList) {
+function createTask(articleDiv, tasksDiv, taskList) {
     const taskContainer = document.createElement('div');
     const taskInput = document.createElement('input');
     const btnDiv =  document.createElement('div');
@@ -193,7 +196,7 @@ function createTask(tasksDiv, taskList) {
 
     btnDiv.append(cancelBtn, checkBtn);
     taskContainer.append(taskInput, btnDiv);
-    tasksDiv.appendChild(taskContainer);
+    articleDiv.appendChild(taskContainer);
 
     checkBtn.addEventListener('click', () => {
         if(taskInput.value === ''){
@@ -206,7 +209,7 @@ function createTask(tasksDiv, taskList) {
             // taskContainer.remove();
             createNewListItem(tasksDiv, newTask, taskList);
             // createAddTaskBtn(tasksDiv, taskList);
-            tasksDiv.appendChild(taskContainer);
+            articleDiv.appendChild(taskContainer);
             taskInput.value = "";
             taskInput.focus();
         }
@@ -214,11 +217,11 @@ function createTask(tasksDiv, taskList) {
 
     cancelBtn.addEventListener('click', ()=> {
         taskContainer.remove();
-        createAddTaskBtn(tasksDiv, taskList);
+        createAddTaskBtn(articleDiv, tasksDiv, taskList);
     })
 }
 
-function createAddTaskBtn(tasksDiv, taskList) {
+function createAddTaskBtn(articleDiv, tasksDiv, taskList) {
     // Add task button
     const addTaskBtn = document.createElement('button');
     const addBtnLabel = document.createElement('label');
@@ -231,9 +234,9 @@ function createAddTaskBtn(tasksDiv, taskList) {
     addBtnLabel.textContent = 'Add Task';
     addBtnContainer.appendChild(addTaskBtn);
     addBtnContainer.appendChild(addBtnLabel);
-    tasksDiv.appendChild(addBtnContainer);
+    articleDiv.appendChild(addBtnContainer);
     addBtnContainer.addEventListener('click', ()=> {
-        createTask(tasksDiv, taskList);
+        createTask(articleDiv, tasksDiv, taskList);
         addBtnContainer.remove();
     })
 }
