@@ -186,11 +186,10 @@ function createTask(articleDiv, tasksDiv, taskList) {
 
     taskContainer.classList.add('new-task-div');
     taskInput.classList.add('new-task-input');
-    // taskInput.setAttribute('maxlength', '10');
     taskInput.setAttribute('placeholder',  'Enter Task Here...')
     cancelBtn.classList.add('new-task-cancel');
     checkBtn.classList.add('new-task-check');
-
+    checkBtn.disabled = true;
     checkBtn.textContent = "✓";
     cancelBtn.textContent = "✕";
 
@@ -199,9 +198,19 @@ function createTask(articleDiv, tasksDiv, taskList) {
     articleDiv.appendChild(taskContainer);
 
     taskInput.addEventListener('keypress', function(e) {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && taskInput.value.trim() !== "") {
             e.preventDefault();
             submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer); 
+        }
+        console.log('Enter pressed')
+    });
+
+    taskInput.addEventListener('keyup', (e)=> {
+        const value = e.currentTarget.value;
+        if(value === "") {
+            checkBtn.disabled = true;
+        } else {
+            checkBtn.disabled = false;
         }
     })
 
@@ -212,7 +221,7 @@ function createTask(articleDiv, tasksDiv, taskList) {
     cancelBtn.addEventListener('click', ()=> {
         taskContainer.remove();
         createAddTaskBtn(articleDiv, tasksDiv, taskList);
-    })
+    });
 }
 
 function submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer) {
@@ -223,9 +232,7 @@ function submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer) {
         let newTask = new Task(taskInput.value, false)
         taskList.push(newTask);
         console.log(taskList);
-        // taskContainer.remove();
         createNewListItem(tasksDiv, newTask, taskList);
-        // createAddTaskBtn(tasksDiv, taskList);
         articleDiv.appendChild(taskContainer);
         taskInput.value = "";
         taskInput.focus();
