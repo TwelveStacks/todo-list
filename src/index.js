@@ -1,3 +1,4 @@
+import { add } from 'date-fns';
 import './style.css';
 
 const contentDiv = document.getElementById('content');
@@ -14,6 +15,8 @@ const dueDate = document.getElementById('dueDate');
 const priority = document.getElementById('priority');
 
 let projectList = [];
+
+loadProjects();
 
 newProjectButton.addEventListener("click", () => {
     resetForm();
@@ -32,7 +35,7 @@ form.addEventListener("submit", () => {
     let newProject = new Project(title.value, description.value, dueDate.value, priority.value)
     createProject(newProject);
     addProjectToList(newProject);
-    console.log(projectList);
+    saveProjectData();
 });
 
 class Project {
@@ -41,6 +44,11 @@ class Project {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.tasks = [];
+    }
+    addTask(taskName, done) {
+        let task = new Task(taskName, done);
+        this.tasks.push(task);
     }
 }
 
@@ -65,7 +73,7 @@ function createProject(project) {
     const deleteBtn = document.createElement('button');
     const openBtn = document.createElement('button');
     const btnDiv = document.createElement('div');
-    let taskList = [];
+    let taskList = project.tasks;
 
     projectDiv.classList.add('project-div');
     projectTitle.classList.add('project-title');
@@ -77,6 +85,8 @@ function createProject(project) {
 
     deleteBtn.addEventListener('click', () => {
         projectDiv.remove();
+        projectList.splice(projectList.indexOf(project), 1);
+        saveProjectData();
     });
 
     projectTitle.textContent = "Title: " + project.title;
@@ -198,7 +208,6 @@ function createTask(articleDiv, tasksDiv, taskList) {
             e.preventDefault();
             submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer); 
         }
-        console.log('Enter pressed')
     });
 
     taskInput.addEventListener('keyup', (e)=> {
@@ -232,6 +241,7 @@ function submitInput(articleDiv, tasksDiv, taskList, taskInput, taskContainer) {
         articleDiv.appendChild(taskContainer);
         taskInput.value = "";
         taskInput.focus();
+        saveProjectData()
     }
 }
 
@@ -282,11 +292,13 @@ function createNewListItem(tasksDiv, newTask, taskList) {
             checkCircle.classList.remove('checkmark-checked')
             li.classList.remove('li-checked');
             newTask.done = false;
+            saveProjectData()
        } else {
             // Else, if unchecked, check the task and set done to true 
             checkCircle.classList.add('checkmark-checked')
             li.classList.add('li-checked');
             newTask.done = true;
+            saveProjectData()
        }
     });
 
@@ -295,5 +307,15 @@ function createNewListItem(tasksDiv, newTask, taskList) {
         taskList.splice(index, 1);
         liDiv.remove();
         console.log(newTask);
+        saveProjectData()
     })
+}
+
+function saveProjectData() {
+    localStorage.setItem("projects", JSON.stringify(projectList));
+    console.log(localStorage.getItem("projects"));
+}
+
+function loadProjects() {
+    projectList = JSON.parse(localStorage.getItem("projects"));
 }
