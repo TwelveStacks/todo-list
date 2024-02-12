@@ -169,10 +169,6 @@ function openProjectInfo(projectTitle, projectDueDate, projectPriority, project,
     dialogContainer.showModal();
 }
 
-// Test project object
-let testProject = new Project("Test", "Test", "01/10/2024", "High")
-    createProject(testProject);
-
 function resetForm() {
     form.reset();
 }
