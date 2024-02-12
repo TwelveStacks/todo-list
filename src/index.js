@@ -46,10 +46,6 @@ class Project {
         this.priority = priority;
         this.tasks = [];
     }
-    addTask(taskName, done) {
-        let task = new Task(taskName, done);
-        this.tasks.push(task);
-    }
 }
 
 class Task {
