@@ -1,2 +1,2 @@
 # todo-list
-https://twelvestacks.github.io/todo-list/
+Live preview https://twelvestacks.github.io/todo-list/
