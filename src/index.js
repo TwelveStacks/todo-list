@@ -312,10 +312,9 @@ function saveProjectData() {
 }
 
 function loadProjects() {
-    if (window.localStorage.length !== null) {
+    if (localStorage.getItem("projects")) {
         projectList = JSON.parse(localStorage.getItem("projects"));
-    }
-    else {
+    } else {
         projectList = [];
     }
 }
