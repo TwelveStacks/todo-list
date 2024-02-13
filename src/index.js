@@ -1,4 +1,3 @@
-import { add } from 'date-fns';
 import './style.css';
 
 const contentDiv = document.getElementById('content');
@@ -310,7 +309,6 @@ function createNewListItem(tasksDiv, newTask, taskList) {
 
 function saveProjectData() {
     localStorage.setItem("projects", JSON.stringify(projectList));
-    console.log(localStorage.getItem("projects"));
 }
 
 function loadProjects() {
