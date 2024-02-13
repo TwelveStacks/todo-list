@@ -189,6 +189,7 @@ function createTask(articleDiv, tasksDiv, taskList) {
     taskContainer.classList.add('new-task-div');
     taskInput.classList.add('new-task-input');
     taskInput.setAttribute('placeholder',  'Enter Task Here...')
+    taskInput.setAttribute('autocomplete',  'new-task')
     cancelBtn.classList.add('new-task-cancel');
     checkBtn.classList.add('new-task-check');
     checkBtn.disabled = true;

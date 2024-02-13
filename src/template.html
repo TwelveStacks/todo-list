@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
-  <script defer src="bundle.js"></script></head>
+  </head>
   <body>
     <header id="header">
       <div class="header-left">
         <button id="new-project" class="button">New Project</button>
       </div>
       <div class="header-center">
-        <h1 class="title">To-do List</h1>
+        <h1 class="title"><%= htmlWebpackPlugin.options.title %></h1>
       </div>
       <div class="header-right"></div>
     </header>
